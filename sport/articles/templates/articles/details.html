@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+  <div class="row">
+    <div class="post-body">
+      {% if post.headline_image %}
+      <div class="img col-6 mr-3"><img class="float-left article-img" src="{{ post.headline_image.url }}" alt="{{post.title}}"></div>
+      {% endif %}
+        <div class="main-body pl-2">
+          <h1>{{ post.title }}</h1>
+          <p>{{ post.body|linebreaks }}</p>
+        </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

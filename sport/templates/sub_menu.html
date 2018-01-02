@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% load sub_menu_sorter %}
+{% block main_menu %}
+{% if sport_menu.name %}
+<div class="container mt-3">
+  <nav class="navbar navbar-expand-lg main-nav">
+    <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" href="{% url 'sports:sport-home' sport_menu.sport_slug %}">{{sport_menu.name}} |</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Country
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <ul>
+            here
+          </ul>
+        </div>
+        {% regroup country_selector by team_a as country_group %}
+        {% for country in country_group %}
+          <li><a href="{% url 'articles:country' sport_menu.sport_slug country.grouper.nation.country_slug %}">
+            {{country.grouper.nation.name}} </a></li>
+        {% endfor %}
+
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url sport_menu.sport_slug|add:':monthly' %}">Monthly View</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url   sport_menu.sport_slug|add:':competition' %}">Competition</a>
+      </li>
+    </ul>
+  </div>
+  </nav>
+</div>
+{% else %}
+{% endif %}
+{% endblock %}
+
+{% url 'articles:country' sport_menu.sport_slug country.grouper.country.name %}

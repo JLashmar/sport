@@ -1,0 +1,109 @@
+{% include "base.html" %}
+
+{% block content %}
+<div class="container">
+  <div class="row">
+    <ul>
+      <li>{{ object.tour }}</li>
+      <li>{{ object.start_date }}</li>
+      <li>{{ object.end_date }}</li>
+      <li>{{ object.home_team }}</li>
+      <li>{{ object.away_team }}</li>
+    </ul>
+
+    <div class="col-12">
+      <table class="table table-hover">
+        <thead class="thead-inverse">
+          <tr>
+            <th>Bastsman</th>
+            <th></th>
+            <th></th>
+            <th>Runs</th>
+            <th>Balls</th>
+            <th>4s</th>
+            <th>6s</th>
+            <th>SR</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+              {% for task in battingdetail %}
+                <td>{{task}}</td>
+                <td>{{task.status}}</td>
+                <td>{{task.bowled_by}}</td>
+                <td>{{task.runs}}</td>
+                <td>{{task.balls_faced}}</td>
+                <td>{{task.fours}}</td>
+                <td>{{task.sixes}}</td>
+                <td>{{task.strike_rate}}</td>
+              {% endfor %}
+          </tr>
+        </tbody>
+        <thead class="thead-inverse">
+          <tr>
+            {% for innings in inningsscorecard %}
+            <th>Total</th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th>({{innings.overs}})</th>
+            <th>{{innings.runs}}</th>
+            {% endfor %}
+          </tr>
+        </thead>
+      </table>
+    </div>
+
+  </div>
+
+  <div class="row">
+    <div class="col-md-6 col-sm-12">
+      <table class="table table-hover">
+        <thead class="thead-inverse">
+          <tr>
+            <th>Bowler</th>
+            <th>Overs</th>
+            <th>Maidens</th>
+            <th>Runs</th>
+            <th>Wickets</th>
+            <th>Econ</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+              {% for bowler in bowlingdetail %}
+                <td>{{task}}</td>
+                <td>{{task.overs}}</td>
+                <td>{{task.maidens}}</td>
+                <td>{{task.runs}}</td>
+                <td>{{task.wickets}}</td>
+                <td>{{task.economy}}</td>
+              {% endfor %}
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-md-6 col-sm-12">
+      <table class="table table-hover">
+        <thead class="thead-inverse">
+          <tr>
+            <th>Fall of Wicket</th>
+            <th></th>
+            <th>Batsman</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+              {% for wicket in fallofwicket %}
+                <td>{{wicket.runs}} - {{wicket.wicket}}</td>
+                <td></td>
+                <td>{{wicket.batsman}}</td>
+              {% endfor %}
+          </tr>
+        </tbody>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      {% for comp in competition_view %}
+      <table class="table table-hover" id='competition_table'>
+        <thead class="thead-inverse">
+          <tr>
+            <th>Team</th>
+            <th>Played</th>
+            <th>Won</th>
+            <th>Drawn</th>
+            <th>Lost</th>
+            <th>For</th>
+            <th>Against</th>
+            <th>Bonus Points</th>
+            <th>Points</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for data in competition_info %}
+          <tr>
+            <td>{{data.team}}</td>
+            <td>{{data.games_played}}</td>
+            <td>{{data.won}}</td>
+            <td>{{data.drawn}}</td>
+            <td>{{data.lost}}</td>
+            <td>{{data.points_for}}</td>
+            <td>{{data.points_against}}</td>
+            <td>{{data.bonus_points}}</td>
+            <td>{{data.total_points}}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      {% endfor %}
+    </div>
+  </div>
+
+</div>
+{% endblock %}
+add in the BBC style buttons to the competition pages:
+
+https://codepen.io/terf/post/jquery-filter-divs
